@@ -1,47 +1,46 @@
-/*
- * =====================================================================================
- *
- *       Filename:  a.cpp
- *
- *    Description:  virtual
- *
- *        Version:  1.0
- *        Created:  Monday 15 April 2019 07:25:22  IST
- *       Revision:  none
- *       Compiler:  gcc
- *
- *         Author:  P Sai Kishore (jade_belk), 
- *        Company:  
- *
- * =====================================================================================
- */
-
 #include<bits/stdc++.h>
 using namespace std;
 typedef long long ll;
+typedef vector<int> vi;
+typedef pair<int,int> pi;
 
 int main()
 {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
     
-    ll i,suma=0,sumb=0,n;
-
-    ll a[3],b[3];
-    for(i=0;i<3;i++){
-        cin>>a[i];
-        suma+=a[i];
-    }
-    for(i=0;i<3;i++)
-    {
-        cin>>b[i];
-        sumb+=b[i];
-    }
+    int n;
     cin>>n;
+    int arr[n],arr_half[n];
 
-    suma=(int)ceil((float)suma/5);sumb=(int)ceil((float)sumb/10);
+    for(int i=0;i<n;i++) {
+        cin>>arr[i];
+    }
 
-    if(suma+sumb<=n) cout<<"YES"<<endl;
-    else cout<<"NO"<<endl;
-    
-    
-        
+   int sum1=0; 
+ for(int i=0;i<n;i++) {
+     arr_half[i]=arr[i]/2;
+     sum1+=arr_half[i];
+    }
+
+    for(int i=0;i<n;i++){
+        if(abs(arr[i])%2==0) continue;
+        if(sum1<0) {
+            if(arr[i]>0) {
+                arr_half[i]++;
+                sum1++;
+            }
+        }
+        else if(sum1>0) {
+            if(arr[i]<0){
+               arr_half[i]--; 
+               sum1--;
+            }
+        }
+    }
+ 
+    for(int i=0;i<n;i++){
+        cout<<arr_half[i]<<endl;
+    }
+    return 0;
 }
