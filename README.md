@@ -1,2 +1,3 @@
 # hello-world
-hello
+
+This repository contains solution for some of the interesting codeforces problems.
